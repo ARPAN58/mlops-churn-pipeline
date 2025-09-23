@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Churn Prediction MLOps (FastAPI + Docker + GitHub Actions + Cloud Run)
 
 Production-ready skeleton for a churn prediction API with CI/CD.
@@ -34,3 +35,6 @@ docker run -p 8000:8000 churn-api:local
 - Push to `main`. The workflow builds, tests, pushes image to GAR, deploys.
 
 
+=======
+# mlops-churn-pipeline
+>>>>>>> e05a4f2aca2042443d2e0b8c061b2924bcab373e
