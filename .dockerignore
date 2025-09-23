@@ -1,0 +1,15 @@
+.git
+__pycache__
+.pytest_cache
+.venv
+venv
+.DS_Store
+*.pyc
+dist
+build
+.coverage
+coverage.xml
+.idea
+.vscode
+infra
+
