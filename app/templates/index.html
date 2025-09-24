@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Churn Prediction UI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Churn Prediction</h1>
+
+      <form id="predict-form">
+        <div class="grid">
+          <label>
+            Tenure (months)
+            <input type="number" id="tenure" value="12" min="0" step="1" required />
+          </label>
+          <label>
+            Monthly charges
+            <input type="number" id="charges" value="50" min="0" step="0.01" required />
+          </label>
+          <label>
+            Contract type (0=MTM,1=1yr,2=2yr)
+            <input type="number" id="contract" value="1" min="0" max="2" step="1" required />
+          </label>
+        </div>
+        <button type="submit">Predict</button>
+      </form>
+
+      <article id="result" style="display:none; margin-top: 1rem;"></article>
+    </main>
+
+    <script src="/static/main.js"></script>
+  </body>
+</html>

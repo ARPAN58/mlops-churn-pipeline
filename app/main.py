@@ -1,4 +1,8 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
 from pydantic import BaseModel, Field
 from typing import List
 
@@ -7,6 +11,9 @@ from app.models.churn_model import ChurnModel
 
 app = FastAPI(title="Churn Prediction Service", version="0.1.0")
 model = ChurnModel()
+
+templates = Jinja2Templates(directory="app/templates")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 
 class CustomerFeatures(BaseModel):
@@ -41,5 +48,10 @@ def predict(request: PredictionRequest) -> PredictionResponse:
 @app.get("/")
 def root() -> dict:
     return {"service": "churn", "version": app.version}
+
+
+@app.get("/ui", response_class=HTMLResponse)
+def ui(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
