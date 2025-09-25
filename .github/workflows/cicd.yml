@@ -58,6 +58,10 @@ jobs:
         with:
           project_id: ${{ env.PROJECT_ID }}
 
+      - name: Enable required services (idempotent)
+        run: |
+          gcloud services enable artifactregistry.googleapis.com run.googleapis.com --quiet || true
+
       - name: Configure Artifact Registry Docker auth
         run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
